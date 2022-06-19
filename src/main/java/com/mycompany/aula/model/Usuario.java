@@ -5,6 +5,7 @@
 package com.mycompany.aula.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -22,7 +23,7 @@ public class Usuario implements Serializable  {
     private String linkRedeSocial;
     private String formacao;
     private String[] interresses;
-    private int[] amigos;
+    private ArrayList<Integer> amigos;
     private int id;
 
     public Usuario(String nome, String email, String senha, String dataNascimento, String telefone, String formacao, int id) {
@@ -33,19 +34,22 @@ public class Usuario implements Serializable  {
         this.telefone = telefone;
         this.formacao = formacao;
         this.id = id;
+        this.amigos = new ArrayList();
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "nome=" + nome + ", email=" + email + ", senha=" + senha + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone + ", linkRedeSocial=" + linkRedeSocial + ", formacao=" + formacao + ", interresses=" + Arrays.toString(interresses) + '}';
+        return "Usuario{" + "nome=" + nome + ", email=" + email + ", senha=" + senha + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone + ", linkRedeSocial=" + linkRedeSocial + ", formacao=" + formacao + ", interresses=" + Arrays.toString(interresses) + ", amigos=" + amigos + ", id=" + id + '}';
     }
 
-    public int[] getAmigos() {
+    
+
+    public ArrayList<Integer> getAmigos() {
         return amigos;
     }
 
-    public void setAmigos(int[] amigos) {
-        this.amigos = amigos;
+    public void setAmigos(int amigos) {
+        this.amigos.add(amigos);
     }
     
     public String getNome() {

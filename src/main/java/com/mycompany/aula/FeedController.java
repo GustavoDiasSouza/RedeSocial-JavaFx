@@ -4,6 +4,7 @@
  */
 package com.mycompany.aula;
 
+import com.mycompany.aula.model.Post;
 import com.mycompany.aula.model.Usuario;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,8 +26,10 @@ import javafx.scene.layout.Pane;
  *
  * @author Gustavo
  */
-public class FeedController implements Initializable {
+public class FeedController {
     
+    private ArrayList<Post> Post;
+    private ArrayList<Integer> ListAmigos;
     private ArrayList<Usuario> Usuarios;
 
     
@@ -39,16 +42,6 @@ public class FeedController implements Initializable {
     @FXML
     private ListView<String> listaPosts;
 
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-       
-        
-    }    
 
     @FXML
     private void buttonPerfil(ActionEvent event) throws IOException {
@@ -60,35 +53,65 @@ public class FeedController implements Initializable {
     private void buttonBusca(ActionEvent event) throws IOException {
         App.passagemDeTela("busca");
     }
+    
+     @FXML
+    private void buttonFeed(ActionEvent event) {
+    }
 
     @FXML
     private void Sair(ActionEvent event) throws IOException {
         App.passagemDeTela("login");
     }
 
-    @FXML
-    private void buttonFeed(ActionEvent event) {
-    }
     
     
-    
+    //Carrega tela
     @FXML
     private void buttonCarregar(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
         
         //Carrega informacao da tela
         panoCarregamento.setVisible(false);
-        
         textNomeUsuario.setText("Olá, "+App.getUsuario().getNome());
         
-        //Lista
-        ObservableList<String> items = FXCollections.observableArrayList ();
-        Usuarios = App.leitorDeArquivosUsuario();
-        
-        for(int i = 0; i < Usuarios.size(); i++ ){
-            items.add(Usuarios.get(i).getNome());
+        try{
+            //Lista de Posts
+            ObservableList<String> items = FXCollections.observableArrayList ();
+
+            Post = App.leitorDeArquivosPost();
+            ListAmigos = App.getUsuario().getAmigos();
+            Usuarios = App.leitorDeArquivosUsuario();
+
+            //Percore post de traz para frente, pegando do ultimo post ate o mais atual
+            for(int i = Post.size()-1; i >= 0; i-- ){
+
+                //Percore a lista de amigos do usuario
+                for(int y = 0; y < ListAmigos.size(); y++ ){
+
+                    if( ListAmigos.get(y) == Post.get(i).getIdUsuario() ){
+
+                        //Percore os usuarios para compara o id com o nome
+                        for (int h = 0; h < Usuarios.size(); h++){
+
+                            if( ( Usuarios.get(h).getId() == Post.get(i).getIdUsuario() ) || ( Post.get(i).getIdUsuario() == App.getUsuario().getId() ) ){
+                                 String nome = Usuarios.get(h).getNome();
+
+                                items.add(nome+": "+Post.get(i).getConteudo()+"\nPostado Em: "+Post.get(i).getTimeStamp());
+                            }
+                        }
+                    }     
+                }
+
+                if( Post.get(i).getIdUsuario() == App.getUsuario().getId() ){
+                    String nome = App.getUsuario().getNome();
+
+                    items.add(nome+": "+Post.get(i).getConteudo()+"\nPostado Em: "+Post.get(i).getTimeStamp());
+                }
+            }
+
+                listaPosts.setItems(items);
         }
-        
-        listaPosts.setItems(items);
-        
-    }
+        catch(FileNotFoundException e){
+            System.out.println("Nenhum post ainda");
+        }
+    }  
 }

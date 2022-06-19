@@ -4,19 +4,15 @@
  */
 package com.mycompany.aula;
 
-import com.mycompany.aula.App;
 import static com.mycompany.aula.App.leitorDeArquivosPost;
 import com.mycompany.aula.model.Post;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -52,6 +48,8 @@ public class PerfilController {
     private Pane panoCarregamento;
     @FXML
     private Button Carregar;
+    @FXML
+    private TextField campoInteresse;
 
     
     @FXML
@@ -92,7 +90,6 @@ public class PerfilController {
                 //Pega a lista de Posts
                 listaPost = leitorDeArquivosPost();
         
-                 int id = App.leitorDeArquivosUsuario().size();
                  //Cadastra o novo Posts se nao existe um       
                         novoPost = new Post(
                                 textPost.getText(),

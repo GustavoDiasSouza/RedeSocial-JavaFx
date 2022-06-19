@@ -53,7 +53,7 @@ public class NovosUsuariosController  {
                 
                 //Verifica se ja existe algum usuario com o mesmo nome e senha
                 for(int i = 0; i < listSave.size(); i++){      
-                    if( (campoNome.getText().equals(listSave.get(i).getNome())) && (campoSenha.getText().equals(listSave.get(i).getSenha()))   ){
+                    if( (campoNome.getText().equals(listSave.get(i).getNome())) ){
                          System.out.println("- Usuario ja existe");
                          return ;
                     }
