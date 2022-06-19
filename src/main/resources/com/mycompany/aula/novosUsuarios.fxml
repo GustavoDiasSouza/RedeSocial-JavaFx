@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.aula.NovosUsuariosController">
+   <children>
+      <Label layoutX="192.0" layoutY="173.0" text="Nome:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="campoNome" layoutX="190.0" layoutY="203.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label layoutX="191.0" layoutY="247.0" text="Senha:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="campoSenha" layoutX="190.0" layoutY="277.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label layoutX="195.0" layoutY="321.0" text="Email:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="campoEmail" layoutX="190.0" layoutY="348.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label layoutX="426.0" layoutY="321.0" text="Telefone:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="campoTelefone" layoutX="421.0" layoutY="348.0" prefHeight="21.0" prefWidth="190.0" />
+      <Label layoutX="428.0" layoutY="173.0" text="Data de Nascimento:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="campoData" layoutX="421.0" layoutY="203.0" prefHeight="25.0" prefWidth="190.0" />
+      <Label layoutX="427.0" layoutY="247.0" text="Formação:">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <TextField fx:id="campoFormacao" layoutX="421.0" layoutY="277.0" prefHeight="25.0" prefWidth="190.0" />
+      <Button fx:id="criarUsuario" layoutX="342.0" layoutY="443.0" mnemonicParsing="false" onAction="#butaoCriarUsuario" text="Criar Novo Usuario" />
+      <Button layoutX="21.0" layoutY="561.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="292.0" layoutY="26.0" prefHeight="40.0" prefWidth="216.0" text="Criar Novos Usuarios" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
