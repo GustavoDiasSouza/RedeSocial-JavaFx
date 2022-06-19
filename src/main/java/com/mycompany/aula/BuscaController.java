@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -63,11 +62,6 @@ public class BuscaController implements Initializable {
 
     @FXML
     private void buttonBusca(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
-        
-        
-       
-        
-        
     }
 
     @FXML
@@ -91,7 +85,6 @@ public class BuscaController implements Initializable {
         }
         
         listaBusca.setItems(items);
-        
     }
 
     @FXML
@@ -120,7 +113,7 @@ public class BuscaController implements Initializable {
                     
                     if( !Usuarios.get(i).getNome().equals( App.getUsuario().getNome() ) ){
                         
-                        items.add(Usuarios.get(i).getNome());
+                        items.add(Usuarios.get(i).getNome()+"\nInteresses: "+Usuarios.get(i).getInterresses());
                     }
                 }
             }
@@ -136,7 +129,7 @@ public class BuscaController implements Initializable {
             for( int i = 0; i < Usuarios.size(); i++ ){
                 
                      if(!Usuarios.get(i).getNome().equals(App.getUsuario().getNome())){
-                        items.add(Usuarios.get(i).getNome());
+                        items.add(Usuarios.get(i).getNome()+"\nInteresses: "+Usuarios.get(i).getInterresses());
                     }
             }
 
@@ -146,7 +139,13 @@ public class BuscaController implements Initializable {
     }
 
     @FXML
-    private void buttonPesquisaInteresse(ActionEvent event) {
+    private void buttonPesquisaInteresse(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
+        
+        ObservableList<String> items = FXCollections.observableArrayList();
+        Usuarios = App.leitorDeArquivosUsuario();
+        
+        
+        
     }
 
     @FXML
@@ -172,6 +171,7 @@ public class BuscaController implements Initializable {
                     //Chama a função que adiciona
                     adicionaAmigo(i);
                     System.out.println("Amigo adicionado"+App.getUsuario());
+                    CampoAddUusario.setText("");
                 }
             }
            
