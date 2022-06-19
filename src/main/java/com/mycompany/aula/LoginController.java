@@ -27,8 +27,6 @@ public class LoginController implements Initializable {
     public Usuario admin;
     public ArrayList<Usuario> lista = new ArrayList();
     
-    private short instanciaAdmin = 0;
-    
     @FXML
     private Button Entrar;
     @FXML

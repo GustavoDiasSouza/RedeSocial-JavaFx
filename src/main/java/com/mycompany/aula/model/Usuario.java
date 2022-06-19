@@ -6,7 +6,6 @@ package com.mycompany.aula.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -22,7 +21,7 @@ public class Usuario implements Serializable  {
     private String telefone;
     private String linkRedeSocial;
     private String formacao;
-    private String[] interresses;
+    private ArrayList<String> interesses;
     private ArrayList<Integer> amigos;
     private int id;
 
@@ -35,14 +34,13 @@ public class Usuario implements Serializable  {
         this.formacao = formacao;
         this.id = id;
         this.amigos = new ArrayList();
+        this.interesses = new ArrayList();
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "nome=" + nome + ", email=" + email + ", senha=" + senha + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone + ", linkRedeSocial=" + linkRedeSocial + ", formacao=" + formacao + ", interresses=" + Arrays.toString(interresses) + ", amigos=" + amigos + ", id=" + id + '}';
+        return "Usuario{" + "nome=" + nome + ", email=" + email + ", senha=" + senha + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone + ", linkRedeSocial=" + linkRedeSocial + ", formacao=" + formacao + ", interesses=" + interesses + ", amigos=" + amigos + ", id=" + id + '}';
     }
-
-    
 
     public ArrayList<Integer> getAmigos() {
         return amigos;
@@ -108,12 +106,12 @@ public class Usuario implements Serializable  {
         this.formacao = formacao;
     }
 
-    public String[] getInterresses() {
-        return interresses;
+    public ArrayList<String> getInterresses() {
+        return interesses;
     }
 
-    public void setInterresses(String[] interresses) {
-        this.interresses = interresses;
+    public void setInterresses(String interesses) {
+        this.interesses.add(interesses);
     }
 
     public int getId() {
