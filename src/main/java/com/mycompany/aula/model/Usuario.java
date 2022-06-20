@@ -109,6 +109,10 @@ public class Usuario implements Serializable  {
     public ArrayList<String> getInterresses() {
         return interesses;
     }
+    
+    public void removeInteresse(int i){
+        this.interesses.remove(i);
+    } 
 
     public void setInterresses(String interesses) {
         this.interesses.add(interesses);

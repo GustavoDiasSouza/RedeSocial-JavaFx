@@ -57,6 +57,22 @@ public class PerfilController {
     private TextField campoInteresse;
     @FXML
     private ListView<String> listaAmigos;
+    @FXML
+    private Label labelNome;
+    @FXML
+    private Label labelSenha;
+    @FXML
+    private Label labelFormacao;
+    @FXML
+    private Label labelTelefone;
+    @FXML
+    private Label labelData;
+    @FXML
+    private Label labelInteresses;
+    @FXML
+    private Label labelAviso;
+    @FXML
+    private ListView<String> listaInteresses;
 
     
     @FXML
@@ -81,7 +97,43 @@ public class PerfilController {
 
     @FXML
     private void buttonAutalizarDados(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
-        System.out.println(App.leitorDeArquivosPost());
+
+        
+        if ( !"".equals(campoNome.getText() ) ){
+            App.getUsuario().setNome( campoNome.getText() );
+        }
+        if ( !"".equals(campoSenha.getText() ) ){
+            App.getUsuario().setSenha( campoSenha.getText() );
+        }
+        if ( !"".equals(campoTelefone.getText() ) ){
+            App.getUsuario().setTelefone(campoTelefone.getText() );
+        }
+        if ( !"".equals(campoDataNascimento.getText() ) ){
+           App.getUsuario().setDataNascimento(campoDataNascimento.getText() );
+        }
+        if ( !"".equals(campoFormacao.getText() ) ){
+           App.getUsuario().setFormacao(campoFormacao.getText() );
+        }
+  
+        Usuarios = App.leitorDeArquivosUsuario();
+        
+        for ( int i = 0; i < Usuarios.size(); i++ ) {
+            
+            if ( Usuarios.get(i).getId() == App.getUsuario().getId() ){
+                Usuarios.remove(i);
+                Usuarios.add(App.getUsuario());
+                App.arquivadorUsuario(Usuarios);
+            }
+        }
+        
+        //Limpa os campos
+        campoNome.setText("");
+        campoSenha.setText("");
+        campoTelefone.setText("");
+        campoDataNascimento.setText("");
+        campoFormacao.setText("");
+        
+        
     }
 
     
@@ -126,7 +178,7 @@ public class PerfilController {
             System.out.println("Campos nao prenchidos");
         } 
     }
-
+    
     @FXML
     private void buttonCarregar(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
         
@@ -134,7 +186,13 @@ public class PerfilController {
         panoCarregamento.setVisible(false);
         
         textNomeUsuario.setText("Olá, "+App.getUsuario().getNome());
+        labelNome.setText("Nome:"+App.getUsuario().getNome());
+        labelSenha.setText("Senha: "+App.getUsuario().getSenha());       
+        labelFormacao.setText("Formação: "+App.getUsuario().getFormacao());
+        labelData.setText("Data de Nascimento: "+App.getUsuario().getDataNascimento());
+        labelTelefone.setText("Telefone: "+App.getUsuario().getTelefone());
         
+
         //Carrega Lista amigos
         ObservableList<String> items = FXCollections.observableArrayList();
         Usuarios = App.leitorDeArquivosUsuario();
@@ -150,5 +208,78 @@ public class PerfilController {
             }
         }
         listaAmigos.setItems(items);
+        
+        //Carrega os interesses
+        ObservableList<String> itemsInteresse = FXCollections.observableArrayList();
+                    
+        for (int x = 0; x < App.getUsuario().getInterresses().size(); x++ ) {
+
+            itemsInteresse.add(App.getUsuario().getInterresses().get(x));
+        }
+        listaInteresses.setItems(itemsInteresse);
+    }
+
+    @FXML
+    private void buttonAdicionaInteresse(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
+        
+         if ( !"".equals(campoInteresse.getText() ) ){
+            App.getUsuario().setInterresses(campoInteresse.getText() );
+            
+            Usuarios = App.leitorDeArquivosUsuario();
+            for ( int i = 0; i < Usuarios.size(); i++) {
+                
+                if ( Usuarios.get(i).getId() == App.getUsuario().getId() ){
+                    Usuarios.remove(i);
+                    Usuarios.add(App.getUsuario());
+                    App.arquivadorUsuario(Usuarios);
+                    
+                    //Atualiza a lista de Interesse
+                    ObservableList<String> items = FXCollections.observableArrayList();
+                    
+                    for (int x = 0; x < App.getUsuario().getInterresses().size(); x++ ) {
+                        
+                        items.add(App.getUsuario().getInterresses().get(x));
+                    }
+                    listaInteresses.setItems(items);
+                }
+            }
+            campoInteresse.setText("");
+         }
+    }
+
+    @FXML
+    private void buttonRemoveInteresse(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
+        
+        if ( !"".equals(campoInteresse.getText() ) ){
+            
+            for ( int i = 0; i < App.getUsuario().getInterresses().size(); i++ ){
+                
+                if ( campoInteresse.getText().equals(App.getUsuario().getInterresses().get(i)) ){
+                    
+                    App.getUsuario().removeInteresse(i);
+                    
+                    Usuarios = App.leitorDeArquivosUsuario();
+                    
+                    for ( int y = 0; y < Usuarios.size(); y++) {
+
+                        if ( Usuarios.get(y).getId() == App.getUsuario().getId() ){
+                            Usuarios.remove(y);
+                            Usuarios.add(App.getUsuario());
+                            App.arquivadorUsuario(Usuarios);
+
+                            //Atualiza a lista de Interesse
+                            ObservableList<String> items = FXCollections.observableArrayList();
+
+                            for (int x = 0; x < App.getUsuario().getInterresses().size(); x++ ) {
+
+                                items.add(App.getUsuario().getInterresses().get(x));
+                            }
+                            listaInteresses.setItems(items);
+                        }
+                    }
+                }
+            }
+            campoInteresse.setText("");
+         }
     }
 }
