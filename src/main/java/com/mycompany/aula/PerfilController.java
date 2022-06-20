@@ -133,10 +133,17 @@ public class PerfilController {
         campoDataNascimento.setText("");
         campoFormacao.setText("");
         
+        //Atualiza o campo
+        textNomeUsuario.setText("Olá, "+App.getUsuario().getNome());
+        labelNome.setText("Nome:"+App.getUsuario().getNome());
+        labelSenha.setText("Senha: "+App.getUsuario().getSenha());       
+        labelFormacao.setText("Formação: "+App.getUsuario().getFormacao());
+        labelData.setText("Data de Nascimento: "+App.getUsuario().getDataNascimento());
+        labelTelefone.setText("Telefone: "+App.getUsuario().getTelefone());
+        
         
     }
 
-    
     //Cria os POSTS
     @FXML
     private void buttonPostar(ActionEvent event) throws FileNotFoundException, IOException, ClassNotFoundException {

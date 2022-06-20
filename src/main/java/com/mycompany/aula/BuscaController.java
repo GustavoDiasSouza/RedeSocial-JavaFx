@@ -45,6 +45,8 @@ public class BuscaController implements Initializable {
     private TextField CampoInteresse;
     @FXML
     private TextField CampoAddUusario;
+    @FXML
+    private Label labelConfirma;
     /**
      * Initializes the controller class.
      * @param url
@@ -113,7 +115,7 @@ public class BuscaController implements Initializable {
                     
                     if( !Usuarios.get(i).getNome().equals( App.getUsuario().getNome() ) ){
                         
-                        items.add(Usuarios.get(i).getNome()+"\nInteresses: "+Usuarios.get(i).getInterresses());
+                        items.add(Usuarios.get(i).getNome()+"\nInteresses: "+Usuarios.get(i).retornaListaInteresseString());
                     }
                 }
             }
@@ -129,7 +131,7 @@ public class BuscaController implements Initializable {
             for( int i = 0; i < Usuarios.size(); i++ ){
                 
                      if(!Usuarios.get(i).getNome().equals(App.getUsuario().getNome())){
-                        items.add(Usuarios.get(i).getNome()+"\nInteresses: "+Usuarios.get(i).getInterresses());
+                        items.add(Usuarios.get(i).getNome()+"\nInteresses: "+Usuarios.get(i).retornaListaInteresseString());
                     }
             }
 
@@ -144,8 +146,17 @@ public class BuscaController implements Initializable {
         ObservableList<String> items = FXCollections.observableArrayList();
         Usuarios = App.leitorDeArquivosUsuario();
         
-        
-        
+        for ( int i = 0; i < Usuarios.size(); i++ ) {
+            
+            for ( int a =0; a < Usuarios.get(i).getInterresses().size(); a++ ){
+                
+                //Verifca se nao esta vazia a lista de interesse e se ela e igual ao que foi pesquisado
+                if (  !Usuarios.get(i).getInterresses().isEmpty() && CampoInteresse.getText().equals(Usuarios.get(i).getInterresses().get(a)) && Usuarios.get(i).getId() != App.getUsuario().getId() ){
+                    items.add(Usuarios.get(i).getNome()+"\nInteresses: "+Usuarios.get(i).retornaListaInteresseString());
+                }
+            }
+        }
+        listaBusca.setItems(items);
     }
 
     @FXML
@@ -163,17 +174,20 @@ public class BuscaController implements Initializable {
                             
                             //Compara se esta na lista dos amigos 
                             if( Usuarios.get(i).getId() == App.getUsuario().getAmigos().get(x) ){
-                                System.out.println("Já adiconado a lista de amigos");
+                                labelConfirma.setText("Já adiconado a lista de amigos!");
                                 CampoAddUusario.setText("");
                                 return;
                             }
                     }
                     //Chama a função que adiciona
                     adicionaAmigo(i);
-                    System.out.println("Amigo adicionado"+App.getUsuario());
+                    System.out.println("Amigo adicionado: "+App.getUsuario());
+                    labelConfirma.setText("Amigo adicionado!");
                     CampoAddUusario.setText("");
+                    return;
                 }
             }
+        labelConfirma.setText("");
            
     }
     

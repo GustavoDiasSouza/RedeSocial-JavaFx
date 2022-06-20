@@ -110,6 +110,20 @@ public class Usuario implements Serializable  {
         return interesses;
     }
     
+    public String retornaListaInteresseString(){
+        String lista = "";
+        for (int t = 0;  t < this.interesses.size(); t++){
+            if ( t == 0 ){
+                lista += this.interesses.get(t);
+            } 
+            else {
+                lista += ", "+this.interesses.get(t);
+            }
+        }
+        
+        return lista;
+    }
+    
     public void removeInteresse(int i){
         this.interesses.remove(i);
     } 

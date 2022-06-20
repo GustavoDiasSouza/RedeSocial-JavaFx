@@ -47,6 +47,7 @@
       <TextField fx:id="campoNome" layoutX="140.0" layoutY="351.0" promptText="Pesquisar por Nome" />
       <TextField fx:id="CampoInteresse" layoutX="318.0" layoutY="351.0" promptText="Pesquisar por Interesse" />
       <TextField fx:id="CampoAddUusario" layoutX="226.0" layoutY="447.0" prefHeight="25.0" prefWidth="166.0" promptText="Adicionar(Nome da pessoa)" />
+      <Label fx:id="labelConfirma" alignment="CENTER" layoutX="181.0" layoutY="430.0" prefHeight="17.0" prefWidth="256.0" textFill="#417cfc" />
       <Pane fx:id="panoCarregamento" prefHeight="607.0" prefWidth="806.0" style="-fx-background-color: white;">
          <children>
             <Button fx:id="Carregar" layoutX="340.0" layoutY="286.0" mnemonicParsing="false" onAction="#buttonCarregar" prefHeight="35.0" prefWidth="127.0" style="-fx-background-radius: 30;" text="Carregar Tela">

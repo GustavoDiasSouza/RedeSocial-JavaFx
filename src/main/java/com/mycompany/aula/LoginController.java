@@ -67,8 +67,11 @@ public class LoginController implements Initializable {
                         App.setRoot("feed",lista.get(i));
                     }
                 } 
+            
             }catch(FileNotFoundException  e){
+                
                 System.out.println("Nenhum usuario criado ainda");
+            
             }
         }
     }

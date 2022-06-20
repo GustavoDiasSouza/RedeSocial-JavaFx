@@ -41,45 +41,45 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <TextField fx:id="campoNome" layoutX="45.0" layoutY="388.0" promptText="Nome" />
-      <TextField fx:id="campoSenha" layoutX="45.0" layoutY="439.0" promptText="Senha" />
-      <TextField fx:id="campoTelefone" layoutX="250.0" layoutY="386.0" promptText="Telefone" />
-      <TextField fx:id="campoDataNascimento" layoutX="250.0" layoutY="439.0" promptText="Data de Nascimento" />
-      <TextField fx:id="campoFormacao" layoutX="44.0" layoutY="493.0" promptText="Formação" />
-      <Button layoutX="174.0" layoutY="550.0" mnemonicParsing="false" onAction="#buttonAutalizarDados" text="Atualizar" />
+      <TextField fx:id="campoNome" layoutX="42.0" layoutY="384.0" promptText="Nome" />
+      <TextField fx:id="campoSenha" layoutX="243.0" layoutY="438.0" promptText="Senha" />
+      <TextField fx:id="campoTelefone" layoutX="242.0" layoutY="384.0" promptText="Telefone" />
+      <TextField fx:id="campoDataNascimento" layoutX="41.0" layoutY="492.0" promptText="Data de Nascimento" />
+      <TextField fx:id="campoFormacao" layoutX="41.0" layoutY="438.0" promptText="Formação" />
+      <Button layoutX="174.0" layoutY="544.0" mnemonicParsing="false" onAction="#buttonAutalizarDados" text="Atualizar" />
       <TextArea fx:id="textPost" focusTraversable="false" layoutX="41.0" layoutY="78.0" prefHeight="126.0" prefWidth="434.0" promptText="Texto do post..." style="-fx-padding: 1;" />
       <Label alignment="CENTER" layoutX="205.0" layoutY="42.0" prefHeight="30.0" prefWidth="107.0" text="Criar Post">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="290.0" layoutY="236.0" mnemonicParsing="false" onAction="#buttonPostar" text="Postar" />
-      <Label alignment="CENTER" layoutX="201.0" layoutY="311.0" prefHeight="30.0" prefWidth="198.0" text="Atualizar Seu Perfil">
+      <Button layoutX="211.0" layoutY="216.0" mnemonicParsing="false" onAction="#buttonPostar" prefHeight="30.0" prefWidth="94.0" text="Postar" />
+      <Label alignment="CENTER" layoutX="159.0" layoutY="321.0" prefHeight="30.0" prefWidth="198.0" text="Atualizar Seu Perfil">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="labelNome" layoutX="44.0" layoutY="368.0" text="Nome:">
+      <Label fx:id="labelNome" layoutX="41.0" layoutY="364.0" text="Nome:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelSenha" layoutX="44.0" layoutY="419.0" text="Senha:">
+      <Label fx:id="labelSenha" layoutX="242.0" layoutY="418.0" text="Senha:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelFormacao" layoutX="44.0" layoutY="473.0" text="Formação:">
+      <Label fx:id="labelFormacao" layoutX="41.0" layoutY="418.0" text="Formação:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelTelefone" layoutX="250.0" layoutY="366.0" text="Telefone:">
+      <Label fx:id="labelTelefone" layoutX="242.0" layoutY="364.0" text="Telefone:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="labelData" layoutX="250.0" layoutY="419.0" text="Data de Nascimento:">
+      <Label fx:id="labelData" layoutX="41.0" layoutY="472.0" text="Data de Nascimento:">
          <font>
             <Font size="14.0" />
          </font>
@@ -97,7 +97,7 @@
          </font>
       </Label>
       <ListView fx:id="listaAmigos" focusTraversable="false" layoutX="593.0" layoutY="385.0" prefHeight="209.0" prefWidth="200.0" />
-      <Label fx:id="labelAviso" alignment="CENTER" layoutX="149.0" layoutY="532.0" prefHeight="19.0" prefWidth="112.0" textFill="#ff4949">
+      <Label fx:id="labelAviso" alignment="CENTER" layoutX="146.0" layoutY="526.0" prefHeight="19.0" prefWidth="112.0" textFill="#ff4949">
          <font>
             <Font size="10.0" />
          </font>
@@ -105,7 +105,7 @@
       <ListView fx:id="listaInteresses" layoutX="412.0" layoutY="386.0" prefHeight="115.0" prefWidth="174.0" />
       <Button layoutX="425.0" layoutY="544.0" mnemonicParsing="false" onAction="#buttonAdicionaInteresse" text="Adicionar" />
       <Button layoutX="511.0" layoutY="544.0" mnemonicParsing="false" onAction="#buttonRemoveInteresse" text="Remover" />
-      <Pane fx:id="panoCarregamento" layoutX="1.0" prefHeight="607.0" prefWidth="806.0" style="-fx-background-color: white;">
+      <Pane fx:id="panoCarregamento" layoutX="1.0" prefHeight="607.0" prefWidth="806.0" style="-fx-background-color: white;" visible="false">
          <children>
             <Button fx:id="Carregar" layoutX="340.0" layoutY="286.0" mnemonicParsing="false" onAction="#buttonCarregar" prefHeight="35.0" prefWidth="127.0" style="-fx-background-radius: 30;" text="Carregar Tela">
                <font>

@@ -60,8 +60,6 @@ public class FeedController {
         App.passagemDeTela("login");
     }
 
-    
-    
     //Carrega tela
     @FXML
     private void buttonCarregar(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {

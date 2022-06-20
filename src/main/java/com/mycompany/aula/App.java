@@ -65,8 +65,7 @@ public class App extends Application {
         launch();
     }
     
-    
-    
+ 
     //Controladores_de_Arquivo do Usuario
     public static void arquivadorUsuario(ArrayList<Usuario> novoUsuario) throws FileNotFoundException, IOException{   
         
@@ -123,8 +122,4 @@ public class App extends Application {
         return  Posts;
     }
     
-    
-    
-    
-
 }
