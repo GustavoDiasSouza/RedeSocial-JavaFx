@@ -135,7 +135,7 @@ public class PerfilController {
         
         //Atualiza o campo
         textNomeUsuario.setText("Olá, "+App.getUsuario().getNome());
-        labelNome.setText("Nome:"+App.getUsuario().getNome());
+        labelNome.setText("Nome: "+App.getUsuario().getNome());
         labelSenha.setText("Senha: "+App.getUsuario().getSenha());       
         labelFormacao.setText("Formação: "+App.getUsuario().getFormacao());
         labelData.setText("Data de Nascimento: "+App.getUsuario().getDataNascimento());
@@ -184,6 +184,7 @@ public class PerfilController {
         else{
             System.out.println("Campos nao prenchidos");
         } 
+        textPost.setText("");
     }
     
     @FXML
@@ -193,7 +194,7 @@ public class PerfilController {
         panoCarregamento.setVisible(false);
         
         textNomeUsuario.setText("Olá, "+App.getUsuario().getNome());
-        labelNome.setText("Nome:"+App.getUsuario().getNome());
+        labelNome.setText("Nome: "+App.getUsuario().getNome());
         labelSenha.setText("Senha: "+App.getUsuario().getSenha());       
         labelFormacao.setText("Formação: "+App.getUsuario().getFormacao());
         labelData.setText("Data de Nascimento: "+App.getUsuario().getDataNascimento());
